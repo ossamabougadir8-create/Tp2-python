@@ -1,0 +1,10 @@
+source = "source.txt"
+destination = "destination.txt"
+try:
+    with open(source, "r") as f_src:
+        contenu = f_src.read()
+    with open(destination, "w") as f_dest:
+        f_dest.write(contenu)
+    print("Copie réussie.")
+except FileNotFoundError:
+    print("Erreur : Le fichier source est introuvable.")
