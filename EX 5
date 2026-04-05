@@ -1,0 +1,19 @@
+def ajouter_tache(titre, description, statut):
+    with open("taches.txt", "a") as f:
+        f.write(f"{titre};{description};{statut}\n")
+def afficher_taches():
+    print("\n--- Liste des Tâches ---")
+    try:
+        with open("taches.txt", "r") as f:
+            for ligne in f:
+                t, d, s = ligne.strip().split(";")
+                print(f"Titre: {t} | Desc: {d} | Statut: {s}")
+    except FileNotFoundError:
+        print("Aucune tâche enregistrée.")
+for i in range(3):
+    print(f"\nSaisie de la tâche {i+1}:")
+    titre = input("Titre : ")
+    desc = input("Description : ")
+    stat = input("Statut (ex: Fait/En cours) : ")
+    ajouter_tache(titre, desc, stat)
+afficher_taches()
