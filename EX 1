@@ -1,0 +1,9 @@
+valeur_recherchee = input("Entrez la valeur à rechercher : ")
+compteur = 0
+try:
+    with open("fichier.txt", "r") as f:
+        for ligne in f:
+            compteur += ligne.count(valeur_recherchee)
+    print(f"La valeur '{valeur_recherchee}' apparaît {compteur} fois.")
+except FileNotFoundError:
+    print("Erreur : Le fichier 'fichier.txt' n'existe pas.")
