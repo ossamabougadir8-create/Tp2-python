@@ -1,0 +1,22 @@
+def ajouter_contact(nom, telephone):
+    with open("contacts.txt", "a") as f:
+        f.write(f"{nom},{telephone}\n")
+def rechercher_contact(nom_recherche):
+    try:
+        with open("contacts.txt", "r") as f:
+            for ligne in f:
+                nom, tel = ligne.strip().split(",")
+                if nom.lower() == nom_recherche.lower():
+                    return tel
+        return "Contact introuvable"
+    except FileNotFoundError:
+        return "Fichier vide ou inexistant"
+for i in range(3):
+    print(f"\nContact {i+1}:")
+    n = input("Nom : ")
+    t = input("Téléphone : ")
+    ajouter_contact(n, t)
+
+print("\nRecherche de 'Ait Ali'...")
+resultat = rechercher_contact("Ait Ali")
+print(f"Résultat : {resultat}")
