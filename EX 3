@@ -1,0 +1,10 @@
+mot_a_supprimer = input("Entrez le mot à bannir : ")
+try:
+    with open("fichier.txt", "r") as f:
+        lignes = f.readlines()
+    nouvelles_lignes = [l for l in lignes if mot_a_supprimer not in l]
+    with open("fichier.txt", "w") as f:
+        f.writelines(nouvelles_lignes)
+    print("Lignes supprimées avec succès.")
+except FileNotFoundError:
+    print("Fichier non trouvé.")
